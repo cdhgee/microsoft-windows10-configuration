@@ -1,0 +1,137 @@
+---
+chocopackages:
+- vscode
+- cascadiafonts
+- cryptsync
+- git
+- fiddler
+- adobe-creative-cloud
+- 7zip
+- microsoft-teams
+- powertoys
+consolecolors:
+- "#282c34"
+- "#61afef"
+- "#98c379"
+- "#56b6c2"
+- "#e06c75"
+- "#c678dd"
+- "#d19a66"
+- "#abb2bf"
+- "#828997"
+- "#61afef"
+- "#98c379"
+- "#56b6c2"
+- "#e5847b"
+- "#c678dd"
+- "#e5c07b"
+- "#ffffff"
+storeapps:
+- Microsoft.Messaging
+- Microsoft.Microsoft3DViewer
+- Microsoft.MicrosoftOfficeHub
+- Microsoft.MicrosoftSolitaireCollection
+- Microsoft.MicrosoftStickyNotes
+- Microsoft.MixedReality.Portal
+  # Paint 3D
+- Microsoft.MSPaint
+  # Mobile Plans
+- Microsoft.OneConnect
+- Microsoft.People
+  # Mail and Calendar
+- Microsoft.WindowsCommunicationsApps
+- Microsoft.WindowsMaps
+  # Voice recorder
+- Microsoft.WindowsSoundRecorder
+- Microsoft.XboxApp
+  # XBox Game Bar
+- Microsoft.XboxGamingOverlay
+- Microsoft.ZuneMusic
+- Microsoft.ZuneVideo
+  # Roblox
+- RobloxCorporation.Roblox
+  # Spotify
+- SpotifyAB.SpotifyMusic
+symlinks:
+- path: AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe
+  name: LocalState
+  target: Windows Terminal Settings
+psmodules:
+- AzureADPreview
+- Az
+- ExchangeOnlineManagement
+- MicrosoftTeams
+- Microsoft.Online.SharePoint.PowerShell
+- MSOnline
+- oh-my-posh
+- posh-git
+registrysettings:
+  # Shopping assistant = off
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: EdgeShoppingAssistantEnabled
+  type: DWord
+  value: 0
+  # Do not track = on
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: ConfigureDoNotTrack
+  type: DWord
+  value: 1
+  # Tracking protection = strict
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: TrackingPrevention
+  type: DWord
+  value: 3
+  # Password manager = disabled
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: PasswordManagerEnabled
+  type: DWord
+  value: 0
+  # Import saved passwords = disabled
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: ImportSavedPasswords
+  type: DWord
+  value: 0
+  # Default search provider = enabled
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: DefaultSearchProviderEnabled
+  type: DWord
+  value: 1
+  # Default search provider image search URL
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: DefaultSearchProviderImageURL
+  type: String
+  value: "{google:baseURL}searchbyimage/upload"
+  # Default search provider image search POST params
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: DefaultSearchProviderImageURLPostParams
+  type: String
+  value: "encoded_image={google:imageThumbnail},image_url={google:imageURL},sbisrc={google:imageSearchSource},original_width={google:imageOriginalWidth},original_height={google:imageOriginalHeight}"
+  # Default search provider search URL
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: DefaultSearchProviderSearchURL
+  type: String
+  value: "{google:baseURL}search?q={searchTerms}&{google:RLZ}{google:originalQueryForSuggestion}{google:assistedQueryStats}{google:searchFieldtrialParameter}{google:searchClient}{google:sourceId}ie={inputEncoding}"
+  # Default search provider suggest URL
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: DefaultSearchProviderSuggestURL
+  type: String
+  value: "{google:baseURL}complete/search?output=chrome&q={searchTerms}"
+  # Suggest similar sites whena website can't be found = disabled
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: AlternateErrorPagesEnabled
+  type: DWord
+  value: 0
+  # Personalize advertising = disabled
+- path: HKCU:/Software/Policies/Microsoft/Edge
+  name: PersonalizationReportingEnabled
+  type: DWord
+  value: 0
+  # Default search provider encodings
+- path: HKCU:/Software/Policies/Microsoft/Edge/DefaultSearchProviderEncodings
+  name: 1
+  type: String
+  value: UTF-8
+- path: HKCU:/Software/Policies/Microsoft/Edge/Recommended
+  name: BlockThirdPartyCookies
+  type: DWord
+  value: 1

@@ -8,7 +8,7 @@ Function Import-Config {
   )
 
   $script:config = Get-Content -Path $Path -Encoding utf8 `
-  | ConvertFrom-Json
+  | ConvertFrom-Yaml
 
 }
 

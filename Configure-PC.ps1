@@ -11,44 +11,22 @@ Function Initialize-Settings {
   Param()
 
   #Install-PackageProvider NuGet -Force
-  Set-PSRepository PSGallery -InstallationPolicy Trusted
+  If ((Get-PSRepository -Name PSGallery).InstallationPolicy -ne "Trusted") {
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+  }
+
+  # Install YAML module so we can use it with settings
+  If (-not (Get-Module -name powershell-yaml)) {
+    Install-Module -Name powershell-yaml -Scope CurrentUser
+  }
 
 }
 
 
-Function Invoke-ElevatedCommands {
+Function Import-ScriptModules {
 
   [CmdletBinding()]
   Param()
-
-  Initialize-ScriptVariables
-  Initialize-Settings
-  Install-Chocolatey
-  Install-ChocolateyPackages
-  Install-PowerShellModules
-  Install-Symlinks
-
-}
-
-
-Function Invoke-UnelevatedCommands {
-
-  [CmdletBinding()]
-  Param()
-
-  Set-ConsoleTheme
-  Set-ConsoleLinks
-  Remove-StoreApps
-
-}
-
-
-Function main {
-
-  [CmdletBinding()]
-  Param()
-
-
 
   $modules = @(
     "Config"
@@ -57,6 +35,7 @@ Function main {
     "Symlinks"
     "PSModules"
     "Elevated"
+    "Registry"
   )
 
   Foreach ($module in $modules) {
@@ -65,30 +44,59 @@ Function main {
 
   }
 
-  Import-Config -Path "$PSScriptRoot/config/config.json"
+}
 
-  # Skip running most of the regular steps if the script had to elevate
-  # itself as these would have been run when not elevated.
 
-  If (-not $Elevated) {
+Function Start-Configuration {
 
-    Invoke-UnelevatedCommands
+  [CmdletBinding()]
+  Param()
+
+  Import-ScriptModules
+  Initialize-Settings
+
+  Import-Config -Path "$PSScriptRoot/config/config.yaml"
+
+  Get-Config -Name psmodules
+  Install-RegistrySettings
+  exit
+
+  Set-ConsoleTheme
+  Set-ConsoleLinks
+  Remove-StoreApps
+  Install-Chocolatey
+  Install-ChocolateyPackages
+  Install-PowerShellModules
+  Install-Symlinks
+
+}
+
+
+Function Test-IsElevated {
+
+  [CmdletBinding()]
+  Param()
+
+  $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+  $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+}
+
+Function main {
+
+  [CmdletBinding()]
+  Param()
+
+
+  If (Test-IsElevated) {
+
+    Start-Configuration
 
   }
+  Else {
 
-  # Skip all the elevated commands if the SkipElevated switch was supplied
-  If (-not $SkipElevated) {
+    Start-ElevatedProcess
 
-    If (Get-IsElevated) {
-
-      Invoke-ElevatedCommands
-
-    }
-    Else {
-
-      Start-ElevatedProcess
-
-    }
   }
 
 }
