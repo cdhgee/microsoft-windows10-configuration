@@ -1,0 +1,18 @@
+# There should always only be 16 of these.
+# Hex color codes. Don't include the # symbol.
+282c34
+61afef
+98c379
+56b6c2
+e06c75
+c678dd
+d19a66
+abb2bf
+828997
+61afef
+98c379
+56b6c2
+e5847b
+c678dd
+e5c07b
+ffffff
