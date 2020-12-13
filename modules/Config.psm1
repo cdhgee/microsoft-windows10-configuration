@@ -1,17 +1,4 @@
-Function Import-Config {
-
-  [CmdletBinding()]
-  Param(
-    [Parameter(Mandatory = $true)]
-    [ValidateNotNullOrEmpty()]
-    [string]$Path
-  )
-
-  $script:config = Get-Content -Path $Path -Encoding utf8 `
-  | ConvertFrom-Yaml
-
-}
-
+$script:config = @{}
 
 Function Get-Config {
 
@@ -21,6 +8,15 @@ Function Get-Config {
     [ValidateNotNullOrEmpty()]
     [string]$Name
   )
+
+  Write-Host (Get-Item -Path $PSCommandPath).Parent.FullName
+
+  If ($Name -notin $script:config.Keys) {
+
+    $script:config.$Name = Get-Content "$($MyInvocation.PSScriptRoot)/config/$Name.yaml" `
+    | ConvertFrom-Yaml
+
+  }
 
   $script:config.$Name
 

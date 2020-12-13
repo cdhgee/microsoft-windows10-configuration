@@ -1,0 +1,9 @@
+---
+- AzureADPreview
+- Az
+- ExchangeOnlineManagement
+- MicrosoftTeams
+- Microsoft.Online.SharePoint.PowerShell
+- MSOnline
+- oh-my-posh
+- posh-git
