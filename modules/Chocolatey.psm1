@@ -16,7 +16,7 @@ Function Install-ChocolateyPackages {
   [CmdletBinding()]
   Param()
 
-  Get-Config -Name chocoPackages -PipelineVariable package `
+  Get-Config -Name chocolatey -PipelineVariable package `
   | ForEach-Object {
     & "C:\ProgramData\chocolatey\bin\choco.exe" install $package
   }

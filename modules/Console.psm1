@@ -11,9 +11,9 @@ Function Set-ConsoleTheme {
   # Note the console colors stored in the registry are BGR (blue is shifted left 16 bits, red is as is)
 
   $i = 0
-  $consoleColors = Get-Config -Name "consolecolors"
+  $console = Get-Config -Name console
 
-  Foreach ($hexCode in $consoleColors) {
+  Foreach ($hexCode in $console.colors) {
 
     $color = [System.Drawing.ColorTranslator]::FromHtml($hexCode)
 
@@ -26,38 +26,31 @@ Function Set-ConsoleTheme {
     $i++
   }
 
-  Set-ItemProperty -Path "HKCU:/Console" -Name "FaceName" -Value "Cascadia Code PL"
+  Set-ItemProperty -Path "HKCU:/Console" -Name "FaceName" -Value $console.fontface
 
   # Size 18
-  Set-ItemProperty -Path "HKCU:/Console" -Name "FontSize" -Value 0x00120000
+  Set-ItemProperty -Path "HKCU:/Console" -Name "FontSize" -Value $console.fontsize
   # Medium weight
-  Set-ItemProperty -Path "HKCU:/Console" -Name "FontWeight" -Value 400
+  Set-ItemProperty -Path "HKCU:/Console" -Name "FontWeight" -Value $console.fontweight
 
 }
 
 Function Set-ConsoleLinks {
 
-  $consoleColors = Get-Config -Name "consolecolors"
+  $console = Get-Config -Name "console"
 
-  $links = @(
-    "${ENV:APPDATA}/Microsoft/Windows/Start Menu/Programs/Windows PowerShell/Windows PowerShell.lnk"
-    "${ENV:APPDATA}/Microsoft/Windows/Start Menu/Programs/Windows PowerShell/Windows PowerShell (x86).lnk"
-    "${ENV:APPDATA}/Microsoft/Windows/Start Menu/Programs/System Tools/Command Prompt.lnk"
-  )
-  $theme = "Dark"
+  Foreach ($l in $console.links) {
 
-  Foreach ($l in $links) {
-
-    $link = & "$PSScriptRoot/Get-Link.ps1" -Path $l
+    $link = & "$PSScriptRoot/Get-Link.ps1" -Path "${env:APPDATA}/$l"
 
     $i = 0
-    Foreach ($hexCode in $consoleColors) {
+    Foreach ($hexCode in $console.colors) {
       $link.ConsoleColors[$i] = $hexCode
       $i++
     }
 
     # Set Light/Dark Theme-Specific Colors
-    if ($theme -eq "Dark") {
+    if ($console.theme -eq "dark") {
       $link.PopUpBackgroundColor = 0xf
       $link.PopUpTextColor = 0x6
       $link.ScreenBackgroundColor = 0x0

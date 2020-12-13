@@ -3,7 +3,7 @@ Function Install-RegistrySettings {
   [CmdletBinding()]
   Param()
 
-  $settings = Get-Config registrysettings
+  $settings = Get-Config registry
 
   Foreach ($setting in $settings) {
 
