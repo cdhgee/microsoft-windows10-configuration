@@ -52,12 +52,8 @@ Function Start-Configuration {
   [CmdletBinding()]
   Param()
 
-  Import-ScriptModules
   Initialize-Settings
 
-  Import-Config -Path "$PSScriptRoot/config/config.yaml"
-
-  Get-Config -Name psmodules
   Install-RegistrySettings
   exit
 
@@ -71,22 +67,12 @@ Function Start-Configuration {
 
 }
 
-
-Function Test-IsElevated {
-
-  [CmdletBinding()]
-  Param()
-
-  $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-  $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-
-}
-
 Function main {
 
   [CmdletBinding()]
   Param()
 
+  Import-ScriptModules
 
   If (Test-IsElevated) {
 

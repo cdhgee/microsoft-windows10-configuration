@@ -1,5 +1,5 @@
 
-Function Get-IsElevated {
+Function Test-IsElevated {
 
   [CmdletBinding()]
   Param()
@@ -21,7 +21,7 @@ Function Start-ElevatedProcess {
   }
 
   If ($PSEdition -in $powershellMappings.Keys) {
-    $psCommand = $script.powershellMappings.$PSEdition
+    $psCommand = $powershellMappings.$PSEdition
   }
   Else {
     throw "Unknown PowerShell edition"
