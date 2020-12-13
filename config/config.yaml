@@ -66,72 +66,102 @@ psmodules:
 - oh-my-posh
 - posh-git
 registrysettings:
+- key: HKCU:/Software/Policies/Microsoft/Edge
+  entries:
   # Shopping assistant = off
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: EdgeShoppingAssistantEnabled
-  type: DWord
-  value: 0
+  - name: EdgeShoppingAssistantEnabled
+    type: DWord
+    value: 0
   # Do not track = on
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: ConfigureDoNotTrack
-  type: DWord
-  value: 1
+  - name: ConfigureDoNotTrack
+    type: DWord
+    value: 1
   # Tracking protection = strict
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: TrackingPrevention
-  type: DWord
-  value: 3
+  - name: TrackingPrevention
+    type: DWord
+    value: 3
   # Password manager = disabled
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: PasswordManagerEnabled
-  type: DWord
-  value: 0
+  - name: PasswordManagerEnabled
+    type: DWord
+    value: 0
   # Import saved passwords = disabled
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: ImportSavedPasswords
-  type: DWord
-  value: 0
+  - name: ImportSavedPasswords
+    type: DWord
+    value: 0
   # Default search provider = enabled
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: DefaultSearchProviderEnabled
-  type: DWord
-  value: 1
+  - name: DefaultSearchProviderEnabled
+    type: DWord
+    value: 1
+  - name: DefaultSearchProviderName
+    type: String
+    value: Google
+  - name: DefaultSearchProviderKeyword
+    type: String
+    value: google.com
   # Default search provider image search URL
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: DefaultSearchProviderImageURL
-  type: String
-  value: "{google:baseURL}searchbyimage/upload"
+  - name: DefaultSearchProviderImageURL
+    type: String
+    value: "{google:baseURL}searchbyimage/upload"
   # Default search provider image search POST params
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: DefaultSearchProviderImageURLPostParams
-  type: String
-  value: "encoded_image={google:imageThumbnail},image_url={google:imageURL},sbisrc={google:imageSearchSource},original_width={google:imageOriginalWidth},original_height={google:imageOriginalHeight}"
+  - name: DefaultSearchProviderImageURLPostParams
+    type: String
+    value: "encoded_image={google:imageThumbnail},image_url={google:imageURL},sbisrc={google:imageSearchSource},original_width={google:imageOriginalWidth},original_height={google:imageOriginalHeight}"
   # Default search provider search URL
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: DefaultSearchProviderSearchURL
-  type: String
-  value: "{google:baseURL}search?q={searchTerms}&{google:RLZ}{google:originalQueryForSuggestion}{google:assistedQueryStats}{google:searchFieldtrialParameter}{google:searchClient}{google:sourceId}ie={inputEncoding}"
+  - name: DefaultSearchProviderSearchURL
+    type: String
+    value: "{google:baseURL}search?q={searchTerms}&{google:RLZ}{google:originalQueryForSuggestion}{google:assistedQueryStats}{google:searchFieldtrialParameter}{google:searchClient}{google:sourceId}ie={inputEncoding}"
   # Default search provider suggest URL
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: DefaultSearchProviderSuggestURL
-  type: String
-  value: "{google:baseURL}complete/search?output=chrome&q={searchTerms}"
+  - name: DefaultSearchProviderSuggestURL
+    type: String
+    value: "{google:baseURL}complete/search?output=chrome&q={searchTerms}"
   # Suggest similar sites whena website can't be found = disabled
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: AlternateErrorPagesEnabled
-  type: DWord
-  value: 0
+  - name: AlternateErrorPagesEnabled
+    type: DWord
+    value: 0
   # Personalize advertising = disabled
-- path: HKCU:/Software/Policies/Microsoft/Edge
-  name: PersonalizationReportingEnabled
-  type: DWord
-  value: 0
+  - name: PersonalizationReportingEnabled
+    type: DWord
+    value: 0
+  - name: SitePerProcess
+    type: DWord
+    value: 1
+- key: HKCU:/Software/Policies/Microsoft/Edge/DefaultSearchProviderEncodings
+  entries:
   # Default search provider encodings
-- path: HKCU:/Software/Policies/Microsoft/Edge/DefaultSearchProviderEncodings
-  name: 1
-  type: String
-  value: UTF-8
-- path: HKCU:/Software/Policies/Microsoft/Edge/Recommended
-  name: BlockThirdPartyCookies
-  type: DWord
-  value: 1
+  - name: 1
+    type: String
+    value: UTF-8
+# Fake MDM enrollment to allow search provider settings to be used in Edge
+- key: HKCU:/Software/Policies/Microsoft/Edge/Recommended
+  entries:
+  - name: BlockThirdPartyCookies
+    type: DWord
+    value: 1
+- key: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  entries:
+  - name: EnrollmentState
+    type: DWord
+    value: 1
+  - name: EnrollmentType
+    type: DWord
+    value: 0
+  - name: IsFederated
+    type: DWord
+    value: 0
+- key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  entries:
+  - name: Flags
+    type: DWord
+    value: 14089087
+  - name: AcctUId
+    type: String
+    value: 0x000000000000000000000000000000000000000000000000000000000000000000000000
+  - name: RoamingCount
+    type: DWord
+    value: 0
+  - name: SslClientCertReference
+    type: String
+    value: MY;User;0000000000000000000000000000000000000000
+  - name: ProtoVer
+    type: String
+    value: 1.2

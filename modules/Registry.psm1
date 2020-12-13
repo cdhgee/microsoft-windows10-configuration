@@ -7,15 +7,18 @@ Function Install-RegistrySettings {
 
   Foreach ($setting in $settings) {
 
-    If (-not (Test-Path $setting.path)) {
+    If (-not (Test-Path $setting.key)) {
 
-      New-Item -Path $setting.path -Force
+      New-Item -Path $setting.key -Force
 
     }
 
-    Remove-ItemProperty -Path $setting.path -Name $setting.Name -Force -ErrorAction SilentlyContinue
+    Foreach ($entry in $setting.entries) {
 
-    New-ItemProperty -Path $setting.path -Name $setting.name -Type $setting.type -Value $setting.value -ErrorAction SilentlyContinue
+      Remove-ItemProperty -Path $setting.key -Name $entry.name -Force -ErrorAction SilentlyContinue
+      New-ItemProperty -Path $setting.key -Name $entry.name -Type $entry.type -Value $entry.value -ErrorAction SilentlyContinue
+
+    }
 
   }
 
