@@ -64,12 +64,12 @@
   - name: 1
     type: String
     value: UTF-8
-# Fake MDM enrollment to allow search provider settings to be used in Edge
 - key: HKCU:/Software/Policies/Microsoft/Edge/Recommended
   entries:
   - name: BlockThirdPartyCookies
     type: DWord
     value: 1
+# Fake MDM enrollment to allow search provider settings to be used in Edge
 - key: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
   entries:
   - name: EnrollmentState
@@ -79,6 +79,11 @@
     type: DWord
     value: 0
   - name: IsFederated
+    type: DWord
+    value: 0
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Windows Search
+  entries:
+  - name: ConnectedSearchUseWeb
     type: DWord
     value: 0
 - key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
