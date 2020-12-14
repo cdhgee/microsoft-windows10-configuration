@@ -40,7 +40,7 @@ Function Import-ScriptModules {
 
   Foreach ($module in $modules) {
 
-    Import-Module -Name "$PSScriptRoot/modules/$module.psm1"
+    Import-Module -Name "$PSScriptRoot/modules/$module"
 
   }
 
