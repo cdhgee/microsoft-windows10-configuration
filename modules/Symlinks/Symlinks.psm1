@@ -1,5 +1,5 @@
 
-Function Install-Shortcuts {
+Function Install-Symlinks {
 
   [CmdletBinding()]
   Param()
