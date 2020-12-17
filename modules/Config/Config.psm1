@@ -9,11 +9,9 @@ Function Get-Config {
     [string]$Name
   )
 
-  Write-Host (Get-Item -Path $PSCommandPath).Parent.FullName
-
   If ($Name -notin $script:config.Keys) {
 
-    $script:config.$Name = Get-Content "$($MyInvocation.PSScriptRoot)/config/$Name.yaml" `
+    $script:config.$Name = Get-Content "$($PSScriptRoot)/../../config/$Name.yaml" `
     | ConvertFrom-Yaml
 
   }
