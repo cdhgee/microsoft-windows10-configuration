@@ -1,5 +1,41 @@
 ---
-- key: HKCU:/Software/Policies/Microsoft/Edge
+# Part 1 of fake MDM enrollment to allow search provider settings to be used in Edge
+- key: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  entries:
+  - name: EnrollmentState
+    type: DWord
+    value: 1
+  - name: EnrollmentType
+    type: DWord
+    value: 0
+  - name: IsFederated
+    type: DWord
+    value: 0
+# Part 2 of fake MDM enrollment to allow search provider settings to be used in Edge
+- key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  entries:
+  - name: Flags
+    type: DWord
+    value: 14089087
+  - name: AcctUId
+    type: String
+    value: 0x000000000000000000000000000000000000000000000000000000000000000000000000
+  - name: RoamingCount
+    type: DWord
+    value: 0
+  - name: SslClientCertReference
+    type: String
+    value: MY;User;0000000000000000000000000000000000000000
+  - name: ProtoVer
+    type: String
+    value: 1.2
+- key: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System
+  entries:
+  # Lock screen after 5 minutes
+  - name: InactivityTimeoutSecs
+    type: DWord
+    value: 300
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
   entries:
   # Shopping assistant = off
   - name: EdgeShoppingAssistantEnabled
@@ -58,56 +94,34 @@
   - name: SitePerProcess
     type: DWord
     value: 1
-- key: HKCU:/Software/Policies/Microsoft/Edge/DefaultSearchProviderEncodings
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderEncodings
   entries:
   # Default search provider encodings
   - name: 1
     type: String
     value: UTF-8
-- key: HKCU:/Software/Policies/Microsoft/Edge/Recommended
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge/Recommended
   entries:
   - name: BlockThirdPartyCookies
     type: DWord
     value: 1
-# Part 1 of fake MDM enrollment to allow search provider settings to be used in Edge
-- key: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
-  entries:
-  - name: EnrollmentState
-    type: DWord
-    value: 1
-  - name: EnrollmentType
-    type: DWord
-    value: 0
-  - name: IsFederated
-    type: DWord
-    value: 0
-- key: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System
-  entries:
-  # Lock screen after 5 minutes
-  - name: InactivityTimeoutSecs
-    type: DWord
-    value: 300
 - key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Windows Search
   entries:
   # Disable Bing search from taskbar
   - name: ConnectedSearchUseWeb
     type: DWord
     value: 0
-# Part 2 of fake MDM enrollment to allow search provider settings to be used in Edge
-- key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Explorer
   entries:
-  - name: Flags
+  # Disable Bing search from taskbar
+  - name: DisableSearchBoxSuggestions
     type: DWord
-    value: 14089087
-  - name: AcctUId
-    type: String
-    value: 0x000000000000000000000000000000000000000000000000000000000000000000000000
-  - name: RoamingCount
+    value: 1
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/SettingSync
+  entries:
+  - name: DisableSettingSync
     type: DWord
     value: 0
-  - name: SslClientCertReference
-    type: String
-    value: MY;User;0000000000000000000000000000000000000000
-  - name: ProtoVer
-    type: String
-    value: 1.2
+  - name: DisableSettingSyncUserOverride
+    type: DWord
+    value: 0
