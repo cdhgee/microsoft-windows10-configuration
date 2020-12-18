@@ -29,12 +29,24 @@
   - name: ProtoVer
     type: String
     value: 1.2
+- key: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/DataCollection
+  entries:
+  # Disable telemetry
+  - name: AllowTelemetry
+    type: DWord
+    value: 0
 - key: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System
   entries:
   # Lock screen after 5 minutes
   - name: InactivityTimeoutSecs
     type: DWord
     value: 300
+- key: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\TextInput
+  entries:
+  # Disable linguistic telemetry
+  - name: AllowLinguisticDataCollection
+    type: DWord
+    value: 0
 - key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
   entries:
   # Shopping assistant = off
@@ -94,6 +106,12 @@
   - name: SitePerProcess
     type: DWord
     value: 1
+- key: HKLM:\SOFTWARE\Policies\Microsoft\AppV\CEIP
+  entries:
+  # Disable AppV CEIP
+  - name: CEIPEnable
+    type: DWord
+    value: 0
 - key: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderEncodings
   entries:
   # Default search provider encodings
@@ -111,6 +129,22 @@
   - name: ConnectedSearchUseWeb
     type: DWord
     value: 0
+- key: HKLM:\SOFTWARE\Policies\Microsoft\SQMClient\Windows
+  entries:
+  # Disable customer experience improvement program
+  - name: CEIPEnable
+    type: DWord
+    value: 0
+- key: HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat
+  entries:
+  # Disable app telemetry
+  - name: AITEnable
+    type: DWord
+    value: 0
+  # Disable inventory collector
+  - name: DisableInventory
+    type: DWord
+    value: 1
 - key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Explorer
   entries:
   # Disable Bing search from taskbar
@@ -125,3 +159,8 @@
   - name: DisableSettingSyncUserOverride
     type: DWord
     value: 0
+- key: HKLM:\SOFTWARE\Policies\Microsoft\Windows\TabletPC
+  entries:
+  - name: PreventHandwritingDataSharing
+    type: DWord
+    value: 1
