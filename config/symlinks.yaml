@@ -1,3 +1,5 @@
+---
+symlinks:
 - path: AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe
   name: LocalState
   target: Windows Terminal Settings

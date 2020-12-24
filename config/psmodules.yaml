@@ -1,4 +1,5 @@
 ---
+psmodules:
 - AzureADPreview
 - Az
 - ExchangeOnlineManagement

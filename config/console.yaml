@@ -1,26 +1,27 @@
 ---
-colors:
-- "#282c34"
-- "#61afef"
-- "#98c379"
-- "#56b6c2"
-- "#e06c75"
-- "#c678dd"
-- "#d19a66"
-- "#abb2bf"
-- "#828997"
-- "#61afef"
-- "#98c379"
-- "#56b6c2"
-- "#e5847b"
-- "#c678dd"
-- "#e5c07b"
-- "#ffffff"
-fontface: Cascadia Code PL
-fontsize: 1179648
-fontweight: 400
-theme: dark
-shortcuts:
-- Microsoft/Windows/Start Menu/Programs/Windows PowerShell/Windows PowerShell.lnk
-- Microsoft/Windows/Start Menu/Programs/Windows PowerShell/Windows PowerShell (x86).lnk
-- Microsoft/Windows/Start Menu/Programs/System Tools/Command Prompt.lnk
+console:
+  colors:
+  - "#282c34"
+  - "#61afef"
+  - "#98c379"
+  - "#56b6c2"
+  - "#e06c75"
+  - "#c678dd"
+  - "#d19a66"
+  - "#abb2bf"
+  - "#828997"
+  - "#61afef"
+  - "#98c379"
+  - "#56b6c2"
+  - "#e5847b"
+  - "#c678dd"
+  - "#e5c07b"
+  - "#ffffff"
+  fontface: Cascadia Code PL
+  fontsize: 1179648
+  fontweight: 400
+  theme: dark
+  shortcuts:
+  - Microsoft/Windows/Start Menu/Programs/Windows PowerShell/Windows PowerShell.lnk
+  - Microsoft/Windows/Start Menu/Programs/Windows PowerShell/Windows PowerShell (x86).lnk
+  - Microsoft/Windows/Start Menu/Programs/System Tools/Command Prompt.lnk

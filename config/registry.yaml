@@ -1,166 +1,140 @@
 ---
+registry:
 # Part 1 of fake MDM enrollment to allow search provider settings to be used in Edge
-- key: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
-  entries:
-  - name: EnrollmentState
-    type: DWord
-    value: 1
-  - name: EnrollmentType
-    type: DWord
-    value: 0
-  - name: IsFederated
-    type: DWord
-    value: 0
+- name: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF/EnrollmentState
+  type: DWord
+  value: 1
+- name: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF/EnrollmentType
+  type: DWord
+  value: 0
+- name: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF/IsFederated
+  type: DWord
+  value: 0
 # Part 2 of fake MDM enrollment to allow search provider settings to be used in Edge
-- key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
-  entries:
-  - name: Flags
-    type: DWord
-    value: 14089087
-  - name: AcctUId
-    type: String
-    value: 0x000000000000000000000000000000000000000000000000000000000000000000000000
-  - name: RoamingCount
-    type: DWord
-    value: 0
-  - name: SslClientCertReference
-    type: String
-    value: MY;User;0000000000000000000000000000000000000000
-  - name: ProtoVer
-    type: String
-    value: 1.2
-- key: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/DataCollection
-  entries:
-  # Disable telemetry
-  - name: AllowTelemetry
-    type: DWord
-    value: 0
-- key: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System
-  entries:
-  # Lock screen after 5 minutes
-  - name: InactivityTimeoutSecs
-    type: DWord
-    value: 300
-- key: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\TextInput
-  entries:
-  # Disable linguistic telemetry
-  - name: AllowLinguisticDataCollection
-    type: DWord
-    value: 0
-- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
-  entries:
-  # Shopping assistant = off
-  - name: EdgeShoppingAssistantEnabled
-    type: DWord
-    value: 0
-  # Do not track = on
-  - name: ConfigureDoNotTrack
-    type: DWord
-    value: 1
-  # Tracking protection = strict
-  - name: TrackingPrevention
-    type: DWord
-    value: 3
-  # Password manager = disabled
-  - name: PasswordManagerEnabled
-    type: DWord
-    value: 0
-  # Import saved passwords = disabled
-  - name: ImportSavedPasswords
-    type: DWord
-    value: 0
-  # Default search provider = enabled
-  - name: DefaultSearchProviderEnabled
-    type: DWord
-    value: 1
-  - name: DefaultSearchProviderName
-    type: String
-    value: Google
-  - name: DefaultSearchProviderKeyword
-    type: String
-    value: google.com
-  # Default search provider image search URL
-  - name: DefaultSearchProviderImageURL
-    type: String
-    value: "{google:baseURL}searchbyimage/upload"
-  # Default search provider image search POST params
-  - name: DefaultSearchProviderImageURLPostParams
-    type: String
-    value: "encoded_image={google:imageThumbnail},image_url={google:imageURL},sbisrc={google:imageSearchSource},original_width={google:imageOriginalWidth},original_height={google:imageOriginalHeight}"
-  # Default search provider search URL
-  - name: DefaultSearchProviderSearchURL
-    type: String
-    value: "{google:baseURL}search?q={searchTerms}&{google:RLZ}{google:originalQueryForSuggestion}{google:assistedQueryStats}{google:searchFieldtrialParameter}{google:searchClient}{google:sourceId}ie={inputEncoding}"
-  # Default search provider suggest URL
-  - name: DefaultSearchProviderSuggestURL
-    type: String
-    value: "{google:baseURL}complete/search?output=chrome&q={searchTerms}"
-  # Suggest similar sites whena website can't be found = disabled
-  - name: AlternateErrorPagesEnabled
-    type: DWord
-    value: 0
-  # Personalize advertising = disabled
-  - name: PersonalizationReportingEnabled
-    type: DWord
-    value: 0
-  - name: SitePerProcess
-    type: DWord
-    value: 1
-- key: HKLM:\SOFTWARE\Policies\Microsoft\AppV\CEIP
-  entries:
-  # Disable AppV CEIP
-  - name: CEIPEnable
-    type: DWord
-    value: 0
-- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderEncodings
-  entries:
-  # Default search provider encodings
-  - name: 1
-    type: String
-    value: UTF-8
-- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge/Recommended
-  entries:
-  - name: BlockThirdPartyCookies
-    type: DWord
-    value: 1
-- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Windows Search
-  entries:
-  # Disable Bing search from taskbar
-  - name: ConnectedSearchUseWeb
-    type: DWord
-    value: 0
-- key: HKLM:\SOFTWARE\Policies\Microsoft\SQMClient\Windows
-  entries:
-  # Disable customer experience improvement program
-  - name: CEIPEnable
-    type: DWord
-    value: 0
-- key: HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat
-  entries:
-  # Disable app telemetry
-  - name: AITEnable
-    type: DWord
-    value: 0
-  # Disable inventory collector
-  - name: DisableInventory
-    type: DWord
-    value: 1
-- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Explorer
-  entries:
-  # Disable Bing search from taskbar
-  - name: DisableSearchBoxSuggestions
-    type: DWord
-    value: 1
-- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/SettingSync
-  entries:
-  - name: DisableSettingSync
-    type: DWord
-    value: 0
-  - name: DisableSettingSyncUserOverride
-    type: DWord
-    value: 0
-- key: HKLM:\SOFTWARE\Policies\Microsoft\Windows\TabletPC
-  entries:
-  - name: PreventHandwritingDataSharing
-    type: DWord
-    value: 1
+- name: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF/Flags
+  type: DWord
+  value: 14089087
+- name: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF/AcctUId
+  type: String
+  value: 0x000000000000000000000000000000000000000000000000000000000000000000000000
+- name: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF/RoamingCount
+  type: DWord
+  value: 0
+- name: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF/SslClientCertReference
+  type: String
+  value: MY;User;0000000000000000000000000000000000000000
+- name: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF/ProtoVer
+  type: String
+  value: 1.2
+# Disable telemetry
+- name: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/DataCollection/AllowTelemetry
+  type: DWord
+  value: 0
+# Lock screen after 5 minutes
+- name: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System/InactivityTimeoutSecs
+  type: DWord
+  value: 300
+# Disable linguistic telemetry
+- name: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/TextInput/AllowLinguisticDataCollection
+  type: DWord
+  value: 0
+# Shopping assistant = off
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/EdgeShoppingAssistantEnabled
+  type: DWord
+  value: 0
+# Do not track = on
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/ConfigureDoNotTrack
+  type: DWord
+  value: 1
+# Tracking protection = strict
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/TrackingPrevention
+  type: DWord
+  value: 3
+# Password manager = disabled
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/PasswordManagerEnabled
+  type: DWord
+  value: 0
+# Import saved passwords = disabled
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/ImportSavedPasswords
+  type: DWord
+  value: 0
+# Default search provider = enabled
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderEnabled
+  type: DWord
+  value: 1
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderName
+  type: String
+  value: Google
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderKeyword
+  type: String
+  value: google.com
+# Default search provider image search URL
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderImageURL
+  type: String
+  value: "{google:baseURL}searchbyimage/upload"
+# Default search provider image search POST params
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderImageURLPostParams
+  type: String
+  value: "encoded_image={google:imageThumbnail},image_url={google:imageURL},sbisrc={google:imageSearchSource},original_width={google:imageOriginalWidth},original_height={google:imageOriginalHeight}"
+# Default search provider search URL
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderSearchURL
+  type: String
+  value: "{google:baseURL}search?q={searchTerms}&{google:RLZ}{google:originalQueryForSuggestion}{google:assistedQueryStats}{google:searchFieldtrialParameter}{google:searchClient}{google:sourceId}ie={inputEncoding}"
+# Default search provider suggest URL
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderSuggestURL
+  type: String
+  value: "{google:baseURL}complete/search?output=chrome&q={searchTerms}"
+# Suggest similar sites whena website can't be found = disabled
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/AlternateErrorPagesEnabled
+  type: DWord
+  value: 0
+# Personalize advertising = disabled
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/PersonalizationReportingEnabled
+  type: DWord
+  value: 0
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/SitePerProcess
+  type: DWord
+  value: 1
+# Disable AppV CEIP
+- name: HKLM:/SOFTWARE/Policies/Microsoft/AppV/CEIP/CEIPEnable
+  type: DWord
+  value: 0
+# Default search provider encodings
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderEncodings/1
+  type: String
+  value: UTF-8
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Edge/Recommended/BlockThirdPartyCookies
+  type: DWord
+  value: 1
+# Disable Bing search from taskbar
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Windows Search/ConnectedSearchUseWeb
+  type: DWord
+  value: 0
+# Disable customer experience improvement program
+- name: HKLM:/SOFTWARE/Policies/Microsoft/SQMClient/Windows/CEIPEnable
+  type: DWord
+  value: 0
+# Disable app telemetry
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Windows/AppCompat/AITEnable
+  type: DWord
+  value: 0
+# Disable inventory collector
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Windows/AppCompat/DisableInventory
+  type: DWord
+  value: 1
+# Disable Bing search from taskbar
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Explorer/DisableSearchBoxSuggestions
+  type: DWord
+  value: 1
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Windows/SettingSync/DisableSettingSync
+  type: DWord
+  value: 0
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Windows/SettingSync/DisableSettingSyncUserOverride
+  type: DWord
+  value: 0
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Windows/TabletPC/PreventHandwritingDataSharing
+  type: DWord
+  value: 1
+- name: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Windows Search/AllowCortana
+  type: DWord
+  value: 0

@@ -1,4 +1,6 @@
+
 ---
+chocolatey:
 - vscode
 - cascadiafonts
 - cryptsync
