@@ -1,4 +1,13 @@
-$script:config = @{}
+Function Import-Config {
+
+  [CmdletBinding()]
+  Param()
+
+  $script:config = Get-ChildItem -Recurse -Path "$($PSScriptRoot)/../../config" -Filter "*.yaml" -PipelineVariable configFile `
+  | Get-Content -Encoding utf8 -AllDocuments -PipelineVariable yaml `
+  | ConvertFrom-Yaml
+
+}
 
 Function Get-Config {
 
@@ -9,13 +18,8 @@ Function Get-Config {
     [string]$Name
   )
 
-  If ($Name -notin $script:config.Keys) {
-
-    $script:config.$Name = Get-Content "$($PSScriptRoot)/../../config/$Name.yaml" `
-    | ConvertFrom-Yaml
-
-  }
-
   $script:config.$Name
 
 }
+
+Import-Config
