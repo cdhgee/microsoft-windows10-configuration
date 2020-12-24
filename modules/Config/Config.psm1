@@ -4,8 +4,8 @@ Function Import-Config {
   Param()
 
   $script:config = Get-ChildItem -Recurse -Path "$($PSScriptRoot)/../../config" -Filter "*.yaml" -PipelineVariable configFile `
-  | Get-Content -Encoding utf8 -AllDocuments -PipelineVariable yaml `
-  | ConvertFrom-Yaml
+  | Get-Content -Encoding utf8 -PipelineVariable yaml `
+  | ConvertFrom-Yaml -AllDocuments -UseMergingParser
 
 }
 
