@@ -1,0 +1,37 @@
+---
+# These settings make Windows think it is managed by MDM using a "fake" MDM
+# provider. This is needed for the Edge search settings settings which aren't
+# applied unless the PC is managed by MDM or joined to an AD domain.
+registry:
+- key: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  name: EnrollmentState
+  type: DWord
+  value: 1
+- key: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  name: EnrollmentType
+  type: DWord
+  value: 0
+- key: HKLM:/SOFTWARE/Microsoft/Enrollments/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  name: IsFederated
+  type: DWord
+  value: 0
+- key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  name: Flags
+  type: DWord
+  value: 14089087
+- key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  name: AcctUId
+  type: String
+  value: 0x000000000000000000000000000000000000000000000000000000000000000000000000
+- key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  name: RoamingCount
+  type: DWord
+  value: 0
+- key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  name: SslClientCertReference
+  type: String
+  value: MY;User;0000000000000000000000000000000000000000
+- key: HKLM:/SOFTWARE/Microsoft/Provisioning/OMADM/Accounts/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF
+  name: ProtoVer
+  type: String
+  value: 1.2

@@ -1,0 +1,7 @@
+---
+registry:
+# Lock screen after 5 minutes
+- key: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System
+  name: InactivityTimeoutSecs
+  type: DWord
+  value: 300

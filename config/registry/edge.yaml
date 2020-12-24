@@ -1,0 +1,73 @@
+---
+registry:
+# Tracking protection = strict
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: TrackingPrevention
+  type: DWord
+  value: 3
+# Password manager = disabled
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: PasswordManagerEnabled
+  type: DWord
+  value: 0
+# Import saved passwords = disabled
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: ImportSavedPasswords
+  type: DWord
+  value: 0
+# Default search provider = enabled
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: DefaultSearchProviderEnabled
+  type: DWord
+  value: 1
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: DefaultSearchProviderName
+  type: String
+  value: Google
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: DefaultSearchProviderKeyword
+  type: String
+  value: google.com
+# Default search provider image search URL
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: DefaultSearchProviderImageURL
+  type: String
+  value: "{google:baseURL}searchbyimage/upload"
+# Default search provider image search POST params
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: DefaultSearchProviderImageURLPostParams
+  type: String
+  value: "encoded_image={google:imageThumbnail},image_url={google:imageURL},sbisrc={google:imageSearchSource},original_width={google:imageOriginalWidth},original_height={google:imageOriginalHeight}"
+# Default search provider search URL
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: DefaultSearchProviderSearchURL
+  type: String
+  value: "{google:baseURL}search?q={searchTerms}&{google:RLZ}{google:originalQueryForSuggestion}{google:assistedQueryStats}{google:searchFieldtrialParameter}{google:searchClient}{google:sourceId}ie={inputEncoding}"
+# Default search provider suggest URL
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: DefaultSearchProviderSuggestURL
+  type: String
+  value: "{google:baseURL}complete/search?output=chrome&q={searchTerms}"
+# Suggest similar sites whena website can't be found = disabled
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: AlternateErrorPagesEnabled
+  type: DWord
+  value: 0
+# Personalize advertising = disabled
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: PersonalizationReportingEnabled
+  type: DWord
+  value: 0
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: SitePerProcess
+  type: DWord
+  value: 1
+# Default search provider encodings
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge/DefaultSearchProviderEncodings
+  name: 1
+  type: String
+  value: UTF-8
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge/Recommended
+  name: BlockThirdPartyCookies
+  type: DWord
+  value: 1

@@ -1,0 +1,46 @@
+---
+registry:
+# Disable telemetry
+- key: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/DataCollection
+  name: AllowTelemetry
+  type: DWord
+  value: 0
+# Disable linguistic telemetry
+- key: HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/TextInput
+  name: AllowLinguisticDataCollection
+  type: DWord
+  value: 0
+# Shopping assistant = off
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: EdgeShoppingAssistantEnabled
+  type: DWord
+  value: 0
+# Do not track = on
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Edge
+  name: ConfigureDoNotTrack
+  type: DWord
+  value: 1
+# Disable AppV CEIP
+- key: HKLM:/SOFTWARE/Policies/Microsoft/AppV/CEIP
+  name: CEIPEnable
+  type: DWord
+  value: 0
+# Disable customer experience improvement program
+- key: HKLM:/SOFTWARE/Policies/Microsoft/SQMClient/Windows
+  name: CEIPEnable
+  type: DWord
+  value: 0
+# Disable app telemetry
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/AppCompat
+  name: AITEnable
+  type: DWord
+  value: 0
+# Disable inventory collector
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/AppCompat
+  name: DisableInventory
+  type: DWord
+  value: 1
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/TabletPC
+  name: PreventHandwritingDataSharing
+  type: DWord
+  value: 1

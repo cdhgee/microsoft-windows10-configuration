@@ -1,0 +1,23 @@
+---
+registry:
+# Disable Bing search from taskbar
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Explorer
+  name: DisableSearchBoxSuggestions
+  type: DWord
+  value: 1
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Windows Search
+  name: ConnectedSearchUseWeb
+  type: DWord
+  value: 0
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/SettingSync
+  name: DisableSettingSync
+  type: DWord
+  value: 0
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/SettingSync
+  name: DisableSettingSyncUserOverride
+  type: DWord
+  value: 0
+- key: HKLM:/SOFTWARE/Policies/Microsoft/Windows/Windows Search
+  name: AllowCortana
+  type: DWord
+  value: 0
