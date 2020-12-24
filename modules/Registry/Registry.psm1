@@ -13,12 +13,8 @@ Function Install-RegistrySettings {
 
     }
 
-    Foreach ($entry in $setting.entries) {
-
-      Remove-ItemProperty -Path $setting.key -Name $entry.name -Force -ErrorAction SilentlyContinue
-      New-ItemProperty -Path $setting.key -Name $entry.name -Type $entry.type -Value $entry.value -ErrorAction SilentlyContinue
-
-    }
+    Remove-ItemProperty -Path $setting.key -Name $setting.name -Force -ErrorAction SilentlyContinue
+    New-ItemProperty -Path $setting.key -Name $setting.name -Type $setting.type -Value $setting.value -ErrorAction SilentlyContinue
 
   }
 
