@@ -13,8 +13,8 @@ Function Install-RegistrySettings {
 
     }
 
-    Remove-ItemProperty -Path $setting.key -Name $setting.name -Force -ErrorAction SilentlyContinue
-    New-ItemProperty -Path $setting.key -Name $setting.name -Type $setting.type -Value $setting.value -ErrorAction SilentlyContinue
+    # Using -Force will overwrite any existing property setting
+    New-ItemProperty -Path $setting.key -Name $setting.name -Type $setting.type -Value $setting.value -Force -ErrorAction SilentlyContinue
 
   }
 
