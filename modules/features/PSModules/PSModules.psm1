@@ -1,12 +1,11 @@
 
-Function Install-PowerShellModules {
+Function Start-Configuration {
 
   [CmdletBinding()]
   Param()
 
-  Get-Config -Name "psmodules" -PipelineVariable module `
-  | Foreach-Object {
-    Install-Module -Name $module -Scope CurrentUser
-  }
+  $modules = Get-Config -Name "psmodules"
+  Install-Module -Name $modules -Scope CurrentUser
+
 
 }
