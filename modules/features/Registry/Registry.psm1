@@ -1,7 +1,7 @@
 New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS -ErrorAction SilentlyContinue | Out-Null
 
 
-Function Install-RegistrySettings {
+Function Start-Configuration {
 
   [CmdletBinding()]
   Param()
