@@ -1,3 +1,13 @@
+Function Start-Configuration {
+
+  [CmdletBinding()]
+  Param()
+
+  Install-Chocolatey
+  Install-ChocolateyPackages
+
+}
+
 Function Install-Chocolatey {
 
   [CmdletBinding()]

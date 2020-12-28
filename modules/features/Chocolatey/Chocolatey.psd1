@@ -72,7 +72,9 @@
   NestedModules         = @()
 
   # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-  FunctionsToExport     = @()
+  FunctionsToExport     = @(
+    "Start-Configuration"
+  )
 
   # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
   CmdletsToExport       = @()
@@ -129,7 +131,7 @@
   # HelpInfoURI = ""
 
   # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-  # DefaultCommandPrefix = ""
+  DefaultCommandPrefix  = "Chocolatey"
 
 }
 
