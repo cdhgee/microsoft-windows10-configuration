@@ -1,5 +1,5 @@
 
-Function Remove-StoreApps {
+Function Start-Configuration {
 
   $packages = Get-Config -Name "storeapps"
 
