@@ -30,12 +30,8 @@ Function Import-ScriptModules {
 
   $modules = @(
     "Config"
-    "Chocolatey"
-    "Console"
-    "Symlinks"
-    "PSModules"
     "Elevated"
-    "Registry"
+    "ModuleManager"
   )
 
   Foreach ($module in $modules) {
