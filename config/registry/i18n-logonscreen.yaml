@@ -1,0 +1,28 @@
+---
+registry:
+# Display date & time in 24 hour format
+# for logon desktop
+- key: HKU:/.DEFAULT/Control Panel/International
+  name: iTime
+  type: String
+  value: 1
+- key: HKU:/.DEFAULT/Control Panel/International
+  name: sLongDate
+  type: String
+  value: dddd, MMMM d, yyyy
+- key: HKU:/.DEFAULT/Control Panel/International
+  name: sShortDate
+  type: String
+  value: MM/dd/yyyy
+- key: HKU:/.DEFAULT/Control Panel/International
+  name: sShortTime
+  type: String
+  value: HH:mm
+- key: HKU:/.DEFAULT/Control Panel/International
+  name: sTimeFormat
+  type: String
+  value: HH:mm:ss
+- key: HKU:/.DEFAULT/Control Panel/International
+  name: sLongDate
+  type: String
+  value: dddd, MMMM d, yyyy
