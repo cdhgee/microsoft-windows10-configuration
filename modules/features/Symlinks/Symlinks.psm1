@@ -1,5 +1,5 @@
 
-Function Install-Symlinks {
+Function Start-Configuration {
 
   [CmdletBinding()]
   Param()
